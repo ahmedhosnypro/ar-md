@@ -1,0 +1,481 @@
+.mdxeditor {
+  height: 100%;
+}
+
+/* Make the editor area take full height and be scrollable */
+.mdxeditor-root-contenteditable {
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+
+  background: var(--mui-palette-background-default);
+  color: var(--mui-palette-text-primary);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--mui-palette-divider);
+  border-top: none;
+  min-height: 100%;
+}
+
+._contentEditable_sects_380 {
+  flex: 1 1 0;
+  background: transparent;
+  color: var(--mui-palette-text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+.dark-editor {
+  /* Primary & Secondary */
+  --accentBase: var(--mui-palette-primary-main);
+  --accentBgSubtle: var(--mui-palette-secondary-light);
+  --accentBg: var(--mui-palette-primary-dark);
+  --accentBgHover: var(--mui-palette-action-hover);
+  --accentBgActive: var(--mui-palette-action-active);
+  --accentLine: var(--mui-palette-divider);
+  --accentBorder: var(--mui-palette-divider);
+  --accentBorderHover: var(--mui-palette-primary-light);
+  --accentSolid: var(--mui-palette-primary-main);
+  --accentSolidHover: var(--mui-palette-primary-dark);
+  --accentText: var(--mui-palette-primary-contrastText);
+  --accentTextContrast: var(--mui-palette-primary-main);
+
+  --secondaryBase: var(--mui-palette-secondary-main);
+  --secondaryBg: var(--mui-palette-secondary-light);
+  --secondaryText: var(--mui-palette-secondary-contrastText);
+
+  /* Error, Warning, Info, Success */
+  --errorBase: var(--mui-palette-error-main);
+  --errorBg: var(--mui-palette-error-light);
+  --errorText: var(--mui-palette-error-contrastText);
+
+  --warningBase: var(--mui-palette-warning-main);
+  --warningBg: var(--mui-palette-warning-light);
+  --warningText: var(--mui-palette-warning-contrastText);
+
+  --infoBase: var(--mui-palette-info-main);
+  --infoBg: var(--mui-palette-info-light);
+  --infoText: var(--mui-palette-info-contrastText);
+
+  --successBase: var(--mui-palette-success-main);
+  --successBg: var(--mui-palette-success-light);
+  --successText: var(--mui-palette-success-contrastText);
+
+  /* Base (background) colors */
+  --baseBase: var(--mui-palette-background-default);
+  --baseBgSubtle: var(--mui-palette-background-paper);
+  --baseBg: var(--mui-palette-background-default);
+  --baseBgHover: var(--mui-palette-background-paper);
+  --baseBgActive: var(--mui-palette-background-default);
+  --baseLine: var(--mui-palette-divider);
+  --baseBorder: var(--mui-palette-divider);
+  --baseBorderHover: var(--mui-palette-primary-light);
+  --baseSolid: var(--mui-palette-background-paper);
+  --baseSolidHover: var(--mui-palette-background-default);
+  --baseText: var(--mui-palette-text-primary);
+  --baseTextContrast: var(--mui-palette-text-secondary);
+
+  /* Action states */
+  --actionActive: var(--mui-palette-action-active);
+  --actionHover: var(--mui-palette-action-hover);
+  --actionSelected: var(--mui-palette-action-selected);
+  --actionDisabled: var(--mui-palette-action-disabled);
+  --actionDisabledBg: var(--mui-palette-action-disabledBackground);
+  --actionFocus: var(--mui-palette-action-focus);
+
+  /* Common */
+  --black: var(--mui-palette-common-black);
+  --white: var(--mui-palette-common-white);
+
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  color: var(--baseText);
+  --basePageBg: var(--mui-palette-background-default);
+  background: var(--basePageBg); */
+
+  -webkit-print-color-scheme: dark;
+  color-scheme: dark;
+  background: var(--mui-palette-background-default);
+  color: var(--mui-palette-text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Toolbar root */
+.mdxeditor-toolbar {
+  background: var(--mui-palette-background-paper);
+  border-bottom: 1px solid var(--mui-palette-divider);
+  color: var(--mui-palette-text-primary);
+  padding: 4px 8px;
+}
+
+/* Toolbar group */
+._toolbarGroupOfGroups_sects_219 {
+  display: flex;
+  gap: 4px;
+}
+
+/* Toolbar button (default) */
+._toolbarToggleItem_sects_208,
+._toolbarButton_sects_239 {
+  background: none;
+  border: none;
+  color: var(--mui-palette-text-primary);
+  border-radius: 4px;
+  padding: 4px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+._toolbarToggleItem_sects_208[aria-checked="true"],
+._toolbarButton_sects_239:active {
+  background: var(--mui-palette-action-selected);
+  color: var(--mui-palette-primary-main);
+}
+
+._toolbarToggleItem_sects_208:hover,
+._toolbarButton_sects_239:hover {
+  background: var(--mui-palette-action-hover);
+}
+
+._toolbarToggleItem_sects_208:disabled,
+._toolbarButton_sects_239:disabled {
+  color: var(--mui-palette-action-disabled);
+  background: var(--mui-palette-action-disabledBackground);
+  cursor: not-allowed;
+}
+
+/* Toolbar select (dropdown) */
+._selectTrigger_sects_308 {
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-text-primary);
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 4px;
+  padding: 4px 8px;
+  min-width: 100px;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+._selectTrigger_sects_308:hover {
+  border-color: var(--mui-palette-primary-main);
+}
+
+/* Dropdown arrow icon */
+._selectDropdownArrow_sects_374 {
+  color: var(--mui-palette-text-secondary);
+}
+
+/* Tooltip trigger */
+._tooltipTrigger_sects_677 {
+  color: var(--mui-palette-text-secondary);
+}
+
+/* Focus state for contenteditable */
+._contentEditable_sects_380:focus {
+  box-shadow: 0 0 0 2px var(--mui-palette-primary-main);
+  border-radius: 4px;
+}
+
+/* Example for icons (SVGs inherit color) */
+.mdxeditor-toolbar svg {
+  color: inherit;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+/* Link Dialog Popover */
+._linkDialogPopoverContent_sects_601 {
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-text-primary);
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(var(--mui-palette-common-black, 0, 0, 0), 0.5);
+  padding: 20px 24px;
+  min-width: 320px;
+  z-index: 1300;
+  position: relative;
+}
+
+/* Popover Arrow */
+._popoverArrow_sects_650 polygon {
+  fill: var(--mui-palette-background-paper);
+  stroke: var(--mui-palette-divider);
+  stroke-width: 1;
+}
+
+/* Form fields */
+._multiFieldForm_sects_1209,
+._linkDialogEditForm_sects_541 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+._formField_sects_1215 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+._formField_sects_1215 label {
+  color: var(--mui-palette-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+/* Text input */
+._textInput_sects_1201 {
+  background: var(--mui-palette-background-default);
+  color: var(--mui-palette-text-primary);
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+._textInput_sects_1201:focus {
+  border-color: var(--mui-palette-primary-main);
+  box-shadow: 0 0 0 2px
+    rgba(var(--mui-palette-primary-mainChannel, 144, 202, 249), 0.25);
+}
+
+/* Buttons */
+._primaryButton_sects_507 {
+  background: var(--mui-palette-primary-main);
+  color: var(--mui-palette-primary-contrastText);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+._primaryButton_sects_507:hover,
+._primaryButton_sects_507:focus {
+  background: var(--mui-palette-primary-dark);
+}
+
+._secondaryButton_sects_508 {
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-text-primary);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+._secondaryButton_sects_508:hover,
+._secondaryButton_sects_508:focus {
+  background: var(--mui-palette-action-selected);
+}
+
+/* Table Editor */
+._tableEditor_sects_714 {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-text-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(var(--mui-palette-common-black, 0, 0, 0), 0.15);
+}
+
+._tableEditor_sects_714 th,
+._tableEditor_sects_714 td {
+  border: 1px solid var(--mui-palette-divider);
+  padding: 8px 12px;
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-text-primary);
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+._tableEditor_sects_714 thead th {
+  background: var(--mui-palette-grey-900);
+  color: var(--mui-palette-text-primary);
+  font-weight: 600;
+}
+
+._tableEditor_sects_714 tbody td,
+._tableEditor_sects_714 tbody th {
+  background: var(--mui-palette-background-default);
+}
+
+._leftAlignedCell_sects_829 {
+  text-align: left;
+}
+
+._toolCell_sects_725,
+._tableToolsColumn_sects_820 {
+  background: var(--mui-palette-grey-800);
+  color: var(--mui-palette-text-secondary);
+  text-align: center;
+  width: 40px;
+  padding: 0;
+  border: 1px solid var(--mui-palette-divider);
+}
+
+._tableColumnEditorTrigger_sects_744,
+._iconButton_sects_457,
+._addColumnButton_sects_747,
+._addRowButton_sects_746 {
+  background: none;
+  border: none;
+  color: var(--mui-palette-text-secondary);
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._tableColumnEditorTrigger_sects_744:hover,
+._iconButton_sects_457:hover,
+._addColumnButton_sects_747:hover,
+._addRowButton_sects_746:hover {
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-primary-main);
+}
+
+._tableColumnEditorTrigger_sects_744[data-active="true"] {
+  background: var(--mui-palette-action-selected);
+  color: var(--mui-palette-primary-main);
+}
+
+._addColumnButton_sects_747,
+._addRowButton_sects_746 {
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-primary-main);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+._addColumnButton_sects_747:hover,
+._addRowButton_sects_746:hover {
+  background: var(--mui-palette-primary-main);
+  color: var(--mui-palette-primary-contrastText);
+}
+
+._tableEditor_sects_714 svg {
+  color: inherit;
+  fill: currentColor;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+/* Table Column Editor Popover */
+._tableColumnEditorPopoverContent_sects_602 {
+  background: var(--mui-palette-background-paper);
+  color: var(--mui-palette-text-primary);
+  border: 1px solid var(--mui-palette-divider);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(var(--mui-palette-common-black, 0, 0, 0), 0.5);
+  padding: 16px 20px;
+  min-width: 260px;
+  z-index: 1300;
+  position: relative;
+}
+
+/* Popover Arrow */
+._popoverArrow_sects_650 polygon {
+  fill: var(--mui-palette-background-paper);
+  stroke: var(--mui-palette-divider);
+  stroke-width: 1;
+}
+
+/* Toolbar inside popover */
+._tableColumnEditorToolbar_sects_789 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--mui-palette-text-primary);
+  padding: 0;
+  border-radius: 4px;
+}
+
+/* Toggle group for alignment */
+._toggleGroupRoot_sects_802 {
+  display: flex;
+  gap: 4px;
+  background: var(--mui-palette-background-default);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+/* Toggle buttons for alignment */
+._toggleGroupRoot_sects_802 button[type="button"] {
+  background: none;
+  border: none;
+  color: var(--mui-palette-text-secondary);
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._toggleGroupRoot_sects_802 button[type="button"][data-state="on"],
+._toggleGroupRoot_sects_802 button[type="button"]:focus {
+  background: var(--mui-palette-action-selected);
+  color: var(--mui-palette-primary-main);
+  outline: none;
+}
+
+._toggleGroupRoot_sects_802 button[type="button"]:hover {
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-primary-main);
+}
+
+/* Toolbar separator */
+._tableColumnEditorToolbar_sects_789 [role="separator"] {
+  width: 1px;
+  height: 24px;
+  background: var(--mui-palette-divider);
+  margin: 0 8px;
+}
+
+/* Action buttons in toolbar */
+._tableColumnEditorToolbar_sects_789
+  > button[type="button"]:not([role="radio"]) {
+  background: none;
+  border: none;
+  color: var(--mui-palette-text-secondary);
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._tableColumnEditorToolbar_sects_789 > button[type="button"]:hover,
+._tableColumnEditorToolbar_sects_789 > button[type="button"]:focus {
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-primary-main);
+  outline: none;
+}
+
+/* SVG icons inherit color */
+._tableColumnEditorPopoverContent_sects_602 svg {
+  color: inherit;
+  fill: currentColor;
+  vertical-align: middle;
+  pointer-events: none;
+}

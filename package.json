@@ -1,0 +1,46 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mdxeditor/editor": "^3.32.3",
+    "@mui/icons-material": "^7.1.0",
+    "@mui/material": "^7.1.0",
+    "@mui/styles": "^6.4.8",
+    "@types/stylis": "^4.2.7",
+    "@uiw/react-md-editor": "^4.0.7",
+    "install": "^0.13.0",
+    "jss": "^10.10.0",
+    "jss-rtl": "^0.3.0",
+    "lucide-react": "^0.511.0",
+    "mermaid": "^11.6.0",
+    "next": "15.3.2",
+    "next-themes": "^0.4.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "remark-directive": "^4.0.0",
+    "remark-math": "^6.0.0",
+    "stylis": "^4.3.6",
+    "stylis-plugin-rtl": "^2.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "@eslint/eslintrc": "^3"
+  }
+}
